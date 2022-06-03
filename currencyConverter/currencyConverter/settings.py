@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_extensions',
     'django_apscheduler',
-    'fetchFromApi'
+    'fetchFromApi',
+    'currencyConverterApi'
 ]
 
 MIDDLEWARE = [
