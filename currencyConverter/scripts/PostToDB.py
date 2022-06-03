@@ -3,8 +3,7 @@ import requests
 from currencyConverter.settings import API_KEY
 
 
-
-def run():
+def FetchFromApi():
     url ="https://api.apilayer.com/exchangerates_data/latest?&base=EGP"
     payload = {}
     headers= {
@@ -12,6 +11,9 @@ def run():
     }
     response = requests.request("GET", url, headers=headers, data = payload)
     result = response.json()
-    for currency in result['rates']:
-        currencies.objects.create(fromCurrency='EGP',toCurrency=currency, rate=result['rates'][currency])
-        print(currency,result['rates'][currency])
+    return result
+def run():
+    fetchedData=FetchFromApi()
+    for currency in fetchedData['rates']:
+        currencies.objects.create(fromCurrency='EGP',toCurrency=currency, rate=fetchedData['rates'][currency])
+        print(currency,fetchedData['rates'][currency])
