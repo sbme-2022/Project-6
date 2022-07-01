@@ -13,6 +13,6 @@ def update_currencies():
 
 def start():
     scheduler = BackgroundScheduler()
-    scheduler.add_job(update_currencies, 'interval', minutes=1)
+    scheduler.add_job(update_currencies, 'interval', hours=6)
     scheduler.start()
     print("Scheduler started...", file=sys.stdout)
